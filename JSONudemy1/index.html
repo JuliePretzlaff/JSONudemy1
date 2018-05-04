@@ -10,6 +10,7 @@
 </html>
 
 <script>
+    //jasn data from local variable
     var myContainer = "";
     var jsonData = '[{ "name": "John", "age": 30, "car": null }, { "name": "Julie", "age": 29, "car": null },{ "name": "Shawn", "age": 31, "car": "truck" }]';
     
@@ -17,7 +18,7 @@
 
     var obj = JSON.parse(jsonData);
 
-    console.log(obj);//writes it as json object
+    //console.log(obj);//writes it as json object
 
     for (var i = 0; i < obj.length; i++) {
         myContainer += obj[i].name + ". age: " + obj[i].age + '<br/>'
@@ -27,11 +28,22 @@
 </script>
 
 <script>
+    //getting json data from different URL
+
     //create JS object that contains request
     var req = new XMLHttpRequest();
-    //this changes ready state to one, b/c connection is opened
+    //req.open:  this changes ready state to one, b/c connection is opened/initiated
     req.open("GET", "https://api.myjson.com/bins/dh3qi", true);
-    //ready state to 4:  status =200, successful connection
+    //if ready state changes, function will execute
+    //this.responseText outputs strig value of that response.
+    //can parse this into JSON format
+    req.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            var object = JSON.parse(this.responseText);
+            console.log(object)
+        }
+    }
+    //ready state to 4:  status = 200, successful connection
     req.send();
-    console.log(req);
+    //console.log(req);
 </script>
