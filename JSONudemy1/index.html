@@ -25,3 +25,13 @@
 
     document.getElementById("output").innerHTML = myContainer;
 </script>
+
+<script>
+    //create JS object that contains request
+    var req = new XMLHttpRequest();
+    //this changes ready state to one, b/c connection is opened
+    req.open("GET", "https://api.myjson.com/bins/dh3qi", true);
+    //ready state to 4:  status =200, successful connection
+    req.send();
+    console.log(req);
+</script>
