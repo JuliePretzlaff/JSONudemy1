@@ -5,16 +5,23 @@
     <title></title>
 </head>
 <body>
-
+    <div id="output">Empty Div</div>
 </body>
 </html>
 
 <script>
-    var jsonData = '{ "name": "John", "age": 30, "car": null }';
+    var myContainer = "";
+    var jsonData = '[{ "name": "John", "age": 30, "car": null }, { "name": "Julie", "age": 29, "car": null },{ "name": "Shawn", "age": 31, "car": "truck" }]';
     
-    console.log(jsonData); //writes object as a string
+    //console.log(jsonData); //writes object as a string
 
     var obj = JSON.parse(jsonData);
 
     console.log(obj);//writes it as json object
+
+    for (var i = 0; i < obj.length; i++) {
+        myContainer += obj[i].name + ". age: " + obj[i].age + '<br/>'
+    }
+
+    document.getElementById("output").innerHTML = myContainer;
 </script>
