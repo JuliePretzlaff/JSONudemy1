@@ -5,7 +5,11 @@
     <title></title>
 </head>
 <body>
+
+    <button id="myBtn">Click me!</button>
     <div id="output">Empty Div</div>
+
+
 </body>
 </html>
 
@@ -46,4 +50,21 @@
     //ready state to 4:  status = 200, successful connection
     req.send();
     //console.log(req);
+</script>
+
+<script>
+    //using javascript function to get data
+
+    document.getElementById("myBtn").addEventListener("click", myFun)
+    function myFun() {
+        var b = new XMLHttpRequest();
+        b.open("GET", "https://api.myjson.com/bins/dh3qi", true);
+        b.onreadystatechange = function () {
+            //ensure what we're returning is the connection we want
+            if (b.readyState == 4 && b.status == 200) {
+                console.log(this.responseText);
+            }
+        }
+        b.send();
+    };
 </script>
