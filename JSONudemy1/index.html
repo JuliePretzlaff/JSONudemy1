@@ -8,6 +8,7 @@
 
     <button id="myBtn">Click me!</button>
     <div id="output">Empty Div</div>
+    <div id="test">Click to Fill Me!</div>
 
 
 </body>
@@ -63,6 +64,24 @@
             //ensure what we're returning is the connection we want
             if (b.readyState == 4 && b.status == 200) {
                 console.log(this.responseText);
+            }
+        }
+        b.send();
+    };
+</script>
+
+
+<script>
+    //filling div with data
+
+    document.getElementById("myBtn").addEventListener("click", myFun)
+    function myFun() {
+        var b = new XMLHttpRequest();
+        b.open("GET", "https://api.myjson.com/bins/dh3qi", true);
+        b.onreadystatechange = function () {
+            //ensure what we're returning is the connection we want
+            if (b.readyState == 4 && b.status == 200) {
+                document.getElementById("test").innerHTML = this.responseText;
             }
         }
         b.send();
